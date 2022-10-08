@@ -9,11 +9,12 @@ import {useNavigate, Link} from 'react-router-dom';
 
 const Register = () => {
   const [err, setErr] = useState(false);
+  const [errMessage, setErrMessage] = useState('')
   const [loading,setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    setLoading(true);
+    
     e.preventDefault()
 
     const displayName = e.target[0].value;
@@ -21,6 +22,8 @@ const Register = () => {
     const pw = e.target[2].value;
     const file = e.target[3].files[0];
 
+    setLoading(true);
+    setErrMessage('')
 
     try {
 
@@ -59,6 +62,7 @@ const Register = () => {
       });
     } catch (err) {
       setErr(true);
+      setErrMessage(err.message);
       setLoading(false);
     }
   };
@@ -81,7 +85,10 @@ const Register = () => {
 
           <button>Sign Up</button>
           {loading && "Uploading and compressing the image please wait..."}
-          {err && <span>Something went wrong</span>}
+          {err
+          ?<span style={{color:'red'}}>{errMessage}</span>
+          :''
+            }
         </form>
         <p>You do have an account? <Link to='/login'>Login</Link></p>
       </div>
