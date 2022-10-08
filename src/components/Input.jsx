@@ -79,7 +79,7 @@ function Input() {
     <div className="input">
       <input type="text" placeholder='Type something...' onChange={e=>setText(e.target.value)} value={text}/>
       <div className="send">
-        <IoIosAttach size={25}/>
+        {/* <IoIosAttach size={25}/> */}
         <input type="file" style={{display:'none'}} id='file' onChange={e=>setImg(e.target.files[0])}/>
         <label htmlFor="file">
           <BsCardImage size={25}/>

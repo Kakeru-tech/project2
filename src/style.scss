@@ -107,11 +107,21 @@
         @include tablet{
             width: 90%;
         }
+        @include mobile{
+            width: 100%;
+            height: 100%;
+        }
 
         .sidebar {
-            flex: 1;
+            // flex: 2;
             background-color: #3e3c61;
             position:relative;
+            width:40%;
+            @include mobile{
+                width:30%;
+            }
+
+            
 
             .navbar {
                 display: flex;
@@ -216,7 +226,11 @@
         }
 
         .chat {
-            flex: 2;
+            // flex: 3;
+            width:60%;
+            @include mobile{
+                width:70%;
+            }
 
             .chatInfo {
                 height: 50px;
